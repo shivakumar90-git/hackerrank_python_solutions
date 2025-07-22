@@ -1,0 +1,64 @@
+# This program finds the longest sequence of 1s in a number's binary form
+
+# These are imports - think of them as tools we might need
+import math
+import os
+import random
+import re
+import sys
+
+# This line means "only run this code if this file is run directly"
+if __name__ == '__main__':
+    # Get a number from the user and convert it to an integer
+    n = int(input())
+
+
+    def ones(n):
+        # Special case: if the number is 0, there are no 1s
+        if n == 0:
+            return 0
+
+        # We'll build the binary representation manually
+        bin_n = ""  # Start with an empty string
+
+        # Keep dividing by 2 until we reach 0
+        while n != 0:
+            # Get the remainder when dividing by 2 (this gives us 0 or 1)
+            remainder = n % 2
+            # Add this digit to the FRONT of our binary string
+            bin_n = str(remainder) + bin_n
+            # Divide by 2 (integer division - no decimals)
+            n = n // 2
+
+        print(f"Binary representation: {bin_n}")  # Show what we got
+
+        # Now find the longest sequence of 1s
+        # Split the binary string wherever there's a 0
+        segments = bin_n.split("0")
+        print(f"Segments after splitting by 0: {segments}")
+
+        # Find the length of each segment and get the maximum
+        lengths = [len(segment) for segment in segments]
+        print(f"Length of each segment: {lengths}")
+
+        mx = max(lengths)
+        return mx
+
+
+    # Call our function and print the result
+    result = ones(n)
+    print(f"Longest sequence of 1s: {result}")
+
+# Let's trace through an example:
+# If input is 13:
+# 13 in binary is 1101
+# 
+# Step by step conversion:
+# 13 ÷ 2 = 6 remainder 1  → bin_n = "1"
+# 6 ÷ 2 = 3 remainder 0   → bin_n = "01" 
+# 3 ÷ 2 = 1 remainder 1   → bin_n = "101"
+# 1 ÷ 2 = 0 remainder 1   → bin_n = "1101"
+#
+# Split "1101" by "0": ["11", "1"]
+# Lengths: [2, 1]
+# Maximum: 2
