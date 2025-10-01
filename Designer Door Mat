@@ -1,0 +1,17 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+user_input = input().split()
+
+n,m = int(user_input[0]),int(user_input[1])
+
+s = 1
+
+for line in range(n+1):
+    if line < int(n/2):
+        print((".|."*s).center(m, '-'))
+        s = s+2    
+    elif line == round(n/2):
+        print("WELCOME".center(m, '-'))
+    elif line > int(n/2) and s >1:
+        s = s-2
+        print((".|."*s).center(m, '-'))
+        
