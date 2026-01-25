@@ -1,0 +1,50 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import cmath
+
+z = complex(input())
+print(abs(z))
+print(cmath.phase(z))
+
+
+ -------------------
+Method 1: Manual Calculation
+import math
+
+z = complex(input())
+
+# Get real and imaginary parts
+a = z.real
+b = z.imag
+
+# Calculate modulus manually
+r = math.sqrt(a**2 + b**2)
+
+# Calculate phase manually
+phi = math.atan2(b, a)
+
+print(r)
+print(phi)
+
+-----------------------
+Method 2: Using cmath.polar()
+pythonimport cmath
+
+z = complex(input())
+
+# Get both at once
+r, phi = cmath.polar(z)
+
+print(r)
+print(phi)
+---------------------------
+Method 3: With Formatting (3 decimal places)
+pythonimport cmath
+
+z = complex(input())
+
+r = abs(z)
+phi = cmath.phase(z)
+
+# Print with 3 decimal places
+print(f"{r:.3f}")
+print(f"{phi:.3f}")
