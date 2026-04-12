@@ -1,0 +1,18 @@
+# Read number of test cases
+n = int(input())
+
+for _ in range(n):
+    s = input()
+    
+    try:
+        # Try to convert to float
+        num = float(s)
+        
+        # Check if it contains a decimal point
+        if '.' in s:
+            print(True)
+        else:
+            print(False)
+    except:
+        # If conversion fails, it's not a valid float
+        print(False)
